@@ -1312,8 +1312,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skyboxComponent: {fileID: 1799964251}
-  skyboxDay: {fileID: 2100000, guid: a4ccaf2a165fa4b45bef17982a689c23, type: 2}
-  skyboxNight: {fileID: 2100000, guid: f4ba5d1d179af1f41b13ee2ad4f70579, type: 2}
+  skyboxes:
+  - {fileID: 2100000, guid: a4ccaf2a165fa4b45bef17982a689c23, type: 2}
+  - {fileID: 2100000, guid: f4ba5d1d179af1f41b13ee2ad4f70579, type: 2}
+  - {fileID: 2100000, guid: 7c2f9fc212f1ad140912d13955922570, type: 2}
+  - {fileID: 2100000, guid: a1f8e14f6c9e7ac4b8370a3287f96468, type: 2}
   fadeDuration: 4
 --- !u!1 &1991841020
 GameObject:

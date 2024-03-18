@@ -5,21 +5,23 @@ using UnityEngine;
 public class FadeSkybox : MonoBehaviour
 {
     public Skybox skyboxComponent;
-    public Material skyboxDay;
-    public Material skyboxNight;
+
+    public Material[] skyboxes;
+    //public Material skyboxDay;
+    //public Material skyboxNight;
     public float fadeDuration;
     int exposureID;
-    int count = 0;
+    int count = 1;
 
     void Start()
     {
         exposureID = Shader.PropertyToID("_Exposure");
-        StartCoroutine(TransitionToNewSkyBox(skyboxNight));
+        StartCoroutine(TransitionToNewSkyBox(skyboxes[count]));
     }
 
     IEnumerator TransitionToNewSkyBox(Material newSkybox)
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(15);
         yield return StartCoroutine(FadeExposure(0));
 
         skyboxComponent.material.SetFloat(exposureID, 1); // Resets the old skybox
@@ -28,13 +30,26 @@ public class FadeSkybox : MonoBehaviour
 
         yield return StartCoroutine(FadeExposure(1));
 
-        if(count == 0){
-            count ++;
+        count++;
+
+        if (count == skyboxes.Length)
+        {
+            count = 0;
+        }
+
+        StartCoroutine(TransitionToNewSkyBox(skyboxes[count]));
+
+        /*
+        if (count == 0)
+        {
+            count++;
             StartCoroutine(TransitionToNewSkyBox(skyboxDay));
-        } else{
+        }
+        else
+        {
             count = 0;
             StartCoroutine(TransitionToNewSkyBox(skyboxNight));
-        }   
+        }*/
 
     }
 
